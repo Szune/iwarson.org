@@ -37,9 +37,9 @@ header {
 #header-inner h3 {
 	font-size: 1rem;
 	font-weight: normal;
-	padding-left: 2rem;
 	padding-bottom: 0.5rem;
 	margin: 0;
+	text-align: center;
 }
 
 .page {
