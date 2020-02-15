@@ -15,7 +15,7 @@
 				2008. I released the scripting language as a standalone, it wasn't the huge success I was hoping for. <a href="assets/erzorscript.png">Here</a> is one user on a random forum inadvertently advertising it. <a href="assets/erzorscript2.png">Here</a> is me showing how trustworthy I am while also showing off the capabilities of... "ErZorScript".
 			</p>
 			<p>
-				2009. I had finished writing a functioning forum in PHP, <a href="assets/forum.png">largely</a> <a href="assets/forum2.png">inspired</a> by <a href="assets/forum3.png">vBulletin</a>. It ran on a home server for several years before we let it go.
+				2009. I had finished writing a functioning forum in PHP, <a href="assets/forum.png">largely</a> <a href="assets/forum2.png">inspired</a> by <a href="assets/forum3.png">vBulletin</a>. It ran on my father's home server for several years before we let it go.
 			<p>
 				The following years, most of my development time was been spent on C#. Since 2016 I've put more time into learning more programming languages (Go, Kotlin, Python, Dart, C, C++).
 			</p>
