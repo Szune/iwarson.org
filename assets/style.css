@@ -30,8 +30,8 @@ header {
 #header-inner h1 {
 	font-size: 3rem;
 	font-weight: normal;
-	padding-left: 1rem;
 	margin: 0;
+	text-align: center;
 }
 
 #header-inner h3 {
