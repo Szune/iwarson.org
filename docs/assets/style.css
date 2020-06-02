@@ -74,15 +74,13 @@ header {
 	display: flex;
 }
 
+.page-link {
+	font-size: 1.5rem;
+}
+
 @media (min-width: 800px) and (orientation: landscape) {
 	.page-link {
 		font-size: 2rem;
-	}
-}
-
-@media not (min-width: 800px) and (orientation: landscape) {
-	.page-link {
-		font-size: 1.5rem;
 	}
 }
 
@@ -102,6 +100,13 @@ header {
 	background: #d53880;
 }
 
+#main {
+	display: flex;
+	flex-flow: row wrap;
+	margin: 0 auto;
+	width: 100%;
+}
+
 @media (min-width: 800px) and (orientation: landscape) {
 	#main {
 		display: flex;
@@ -111,14 +116,6 @@ header {
 	}
 }
 
-@media not (min-width: 800px) and (orientation: landscape) {
-	#main {
-		display: flex;
-		flex-flow: row wrap;
-		margin: 0 auto;
-		width: 100%;
-	}
-}
 
 #github {
 	width: 100%;
@@ -140,6 +137,14 @@ header {
 	margin: 1rem;
 }
 
+.list {
+	display: grid;
+	grid-template-columns: repeat(1,1fr);
+	grid-gap: 1rem;
+	margin: 1rem;
+	text-align: center;
+}
+
 @media (min-width: 800px) and (orientation: landscape) {
 	.list {
 		display: grid;
@@ -150,18 +155,17 @@ header {
 	}
 }
 
-@media not (min-width: 800px) and (orientation: landscape) {
-	.list {
-		display: grid;
-		grid-template-columns: repeat(1,1fr);
-		grid-gap: 1rem;
-		margin: 1rem;
-		text-align: center;
-	}
-}
 
 .list-item {
 	font-size: 1rem;
+}
+
+.link-button {
+	width: 17rem;
+	background: black;
+	padding: 0.5rem;
+	border-radius: 5px;
+	border: 1px solid #65aae7;
 }
 
 @media (min-width: 800px) and (orientation: landscape) {
@@ -174,15 +178,6 @@ header {
 	}
 }
 
-@media not (min-width: 800px) and (orientation: landscape) {
-	.link-button {
-		width: 17rem;
-		background: black;
-		padding: 0.5rem;
-		border-radius: 5px;
-		border: 1px solid #65aae7;
-	}
-}
 
 .list-item a {
 	text-decoration: none;
@@ -197,6 +192,16 @@ header {
 	border: 1px solid #003078;
 }
 
+.tooltip {
+	background: #080707;
+	padding: 0.5rem;
+	border: 1px solid #d53880;
+	border-radius: 5px;
+	color: #fff;
+	margin-top: 0.5rem;
+	width: 17rem;
+}
+
 @media (min-width: 800px) and (orientation: landscape) {
 	.tooltip {
 		background: #080707;
@@ -206,18 +211,6 @@ header {
 		color: #fff;
 		margin-top: 0.5rem;
 		width: 20rem;
-	}
-}
-
-@media not (min-width: 800px) and (orientation: landscape) {
-	.tooltip {
-		background: #080707;
-		padding: 0.5rem;
-		border: 1px solid #d53880;
-		border-radius: 5px;
-		color: #fff;
-		margin-top: 0.5rem;
-		width: 17rem;
 	}
 }
 
