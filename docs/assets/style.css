@@ -74,7 +74,7 @@ header {
 	display: flex;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 800px) and (orientation: landscape) {
 	.page-link {
 		font-size: 2rem;
 	}
@@ -102,7 +102,7 @@ header {
 	background: #d53880;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 800px) and (orientation: landscape) {
 	#main {
 		display: flex;
 		flex-flow: row wrap;
@@ -140,7 +140,7 @@ header {
 	margin: 1rem;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 800px and (orientation: landscape)) {
 	.list {
 		display: grid;
 		grid-template-columns: repeat(2,1fr);
@@ -164,7 +164,7 @@ header {
 	font-size: 1rem;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 800px and (orientation: landscape)) {
 	.link-button {
 		width: 20rem;
 		background: black;
@@ -197,7 +197,7 @@ header {
 	border: 1px solid #003078;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 800px and (orientation: landscape)) {
 	.tooltip {
 		background: #080707;
 		padding: 0.5rem;
