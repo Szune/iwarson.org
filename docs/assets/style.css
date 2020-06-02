@@ -80,7 +80,7 @@ header {
 	}
 }
 
-@media (max-width: 799px) {
+@media not (min-width: 800px) and (orientation: landscape) {
 	.page-link {
 		font-size: 1.5rem;
 	}
@@ -111,7 +111,7 @@ header {
 	}
 }
 
-@media (max-width: 799px) {
+@media not (min-width: 800px) and (orientation: landscape) {
 	#main {
 		display: flex;
 		flex-flow: row wrap;
@@ -150,7 +150,7 @@ header {
 	}
 }
 
-@media (max-width: 799px) {
+@media not (min-width: 800px) and (orientation: landscape) {
 	.list {
 		display: grid;
 		grid-template-columns: repeat(1,1fr);
@@ -174,7 +174,7 @@ header {
 	}
 }
 
-@media (max-width: 799px) {
+@media not (min-width: 800px) and (orientation: landscape) {
 	.link-button {
 		width: 17rem;
 		background: black;
@@ -209,7 +209,7 @@ header {
 	}
 }
 
-@media (max-width: 799px) {
+@media not (min-width: 800px) and (orientation: landscape) {
 	.tooltip {
 		background: #080707;
 		padding: 0.5rem;
