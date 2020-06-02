@@ -1,4 +1,4 @@
-<div class="page-links-container">
+<div class="page-links-container flex-center">
 	<div class="page-links">
 		<div class="page-link">
 			<a href="index.html">Home</a>
