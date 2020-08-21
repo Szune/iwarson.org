@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<title>{%TITLE%} | Erik Iwarson</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="{%ROOT%}assets/style.css">
+	</head>
+	<body>
+		<{HEADER}/>
+		<{PAGES}/>
+
+		<div id="main">
+			<div id="blog" class="page">
+				<div class="page-header">{%TITLE%}</div>
+				<span class="date">{%DATE%}</span>
+				<div class="box-text">
+{%CONTENT%}
+				<p class="back-blog"><a href="{%ROOT%}blog.html">Back to blog index</a></p>
+				</div>
+			</div>
+			<{FOOTER}/>
+		</div>
+	</body>
+</html>

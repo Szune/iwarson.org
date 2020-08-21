@@ -1,0 +1,5 @@
+*.swp
+*.*~
+docs-backup/
+docs-generated/
+blog-backup/

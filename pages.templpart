@@ -1,12 +1,17 @@
 <div class="page-links-container flex-center">
 	<div class="page-links">
 		<div class="page-link">
-			<a href="index.html">Home</a>
+			<a href="{%ROOT%}index.html">Home</a>
 		</div>
 		<div class="page-link-separator">
 		</div>
 		<div class="page-link">
-			<a href="about.html">About</a>
+			<a href="{%ROOT%}blog.html">Blog</a>
+		</div>
+		<div class="page-link-separator">
+		</div>
+		<div class="page-link">
+			<a href="{%ROOT%}about.html">About</a>
 		</div>
 	</div>
 </div>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<title>Reverse engineering - part 1 | Erik Iwarson</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="../assets/style.css">
+	</head>
+	<body>
+		<header>
+	<div id="header-inner">
+		<a id="header-link" href="index.html">
+				<h1>Erik Iwarson</h1>
+				<h3>(Musician && Developer)</h3>
+				<!-- See, I know programming.. -->
+		</a>
+	</div>
+</header>
+
+		<div class="page-links-container flex-center">
+	<div class="page-links">
+		<div class="page-link">
+			<a href="../index.html">Home</a>
+		</div>
+		<div class="page-link-separator">
+		</div>
+		<div class="page-link">
+			<a href="../blog.html">Blog</a>
+		</div>
+		<div class="page-link-separator">
+		</div>
+		<div class="page-link">
+			<a href="../about.html">About</a>
+		</div>
+	</div>
+</div>
+
+
+		<div id="main">
+			<div id="blog" class="page">
+				<div class="page-header">Reverse engineering - part 1</div>
+				<span class="date">2020-08-22</span>
+				<div class="box-text">
+Recently I had the idea to attempt to reverse engineer a 15 year old MMORPG client and the network protocol through which it communicated.<br><br>Partly to learn more about the field, and in order to build a private server from scratch.<br>Also, it's fun.<br><br>The first goal I set out to accomplish was to get my server to be able to respond to login packets.<br>Because I could see that the client loaded wsock32.dll, I figured I'd have a look at calls to the <a href="https://docs.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-recv">recv()</a> function.<br><br>This is how far that got me in the decompiler I used:<a href="assets/1/undef_func.png"><img class="img-blog" src="assets/1/undef_func.png"></a><br>Not very helpful.<br>I can imagine, however, that with more experience with the decompiler, it'd be easier to find where the indirection ends.<br><br>Next, I tried using a debugger and setting a breakpoint on recv() to trace it back to something useful.<br><a href="assets/1/maybe_parse.png"><img class="img-blog" src="assets/1/maybe_parse.png"></a><br>After going through functions referencing the address shown in the debugger, I found something very helpful:<br><a href="assets/1/actually_helpful.png"><img class="img-blog" src="assets/1/actually_helpful.png"></a><br>A function that very clearly creates a <a href="https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-socket">socket</a>.<br>At this point, I started naming functions after their (assumed) intentions.<br><br>To be continued in part 2...
+				<p class="back-blog"><a href="../blog.html">Back to blog index</a></p>
+				</div>
+			</div>
+			<footer>
+	Copyright 2020 Erik Iwarson
+</footer>
+
+		</div>
+	</body>
+</html>

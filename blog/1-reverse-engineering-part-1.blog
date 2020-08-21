@@ -1,0 +1,38 @@
+Title: Reverse engineering - part 1
+Date: 2020-08-22
+---
+Recently I had the idea to attempt to reverse engineer a 15 year old MMORPG client and the network protocol through which it communicated.
+
+
+Partly to learn more about the field, and in order to build a private server from scratch.
+
+Also, it's fun.
+
+
+The first goal I set out to accomplish was to get my server to be able to respond to login packets.
+
+Because I could see that the client loaded wsock32.dll, I figured I'd have a look at calls to the [recv()](https://docs.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-recv) function.
+
+
+This is how far that got me in the decompiler I used:
+!![1/undef_func.png]
+
+Not very helpful.
+
+I can imagine, however, that with more experience with the decompiler, it'd be easier to find where the indirection ends.
+
+
+Next, I tried using a debugger and setting a breakpoint on recv() to trace it back to something useful.
+
+!![1/maybe_parse.png]
+
+After going through functions referencing the address shown in the debugger, I found something very helpful:
+
+!![1/actually_helpful.png]
+
+A function that very clearly creates a [socket](https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-socket).
+
+At this point, I started naming functions after their (assumed) intentions.
+
+
+To be continued in part 2...
