@@ -118,7 +118,7 @@ a:hover {
 }
 
 .img-blog {
-	display: block;
+	display: inline-block;
 	margin: 5px;
 	max-width: 100%;
 }

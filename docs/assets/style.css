@@ -32,7 +32,6 @@ a:hover {
 }
 
 #header-inner {
-	right: 10%;
 	width: 22rem;
 	margin: 0 auto;
 }
@@ -119,7 +118,7 @@ a:hover {
 }
 
 .img-blog {
-	display: block;
+	display: inline-block;
 	margin: 5px;
 	max-width: 100%;
 }
