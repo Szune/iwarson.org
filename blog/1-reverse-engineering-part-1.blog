@@ -15,6 +15,7 @@ Because I could see that the client loaded wsock32.dll, I figured I'd have a loo
 
 
 This is how far that got me in the decompiler I used:
+
 !![1/undef_func.png]
 
 Not very helpful.

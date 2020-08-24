@@ -56,7 +56,8 @@ def md_replace(s, st):
         s = md_int_img_with_url_tag(s)
         s = md_int_img_tag(s)
         s = md_ext_img_tag(s)
-        s = md_block_tag(s, '```', '<pre class="blog-pre"><code class="blog-code">',st)
+        s = md_block_tag(s, '```', '<pre class="blog-pre"><code class="blog-code-block">',st)
+        s = md_tag(s, '`\W?(.*?)\W?`', '<code class="blog-code">', '</code>')
     else:
         s = md_block_tag(s, '```', '</code></pre>', st)
     if s.strip() == "":

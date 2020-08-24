@@ -1,0 +1,48 @@
+Title: Reverse engineering - part 2
+Date: 2020-08-24
+---
+After naming the function in the previous post `CreateSocket`, it was time to move on.
+
+
+So I started looking at all the nested function calls and ended up finding a switch statement:
+
+!![2/switch-1.png]
+
+
+Thanks to the magic of strings, this part was a lot easier to understand than the previous one:
+
+!![2/switch-2.png]
+
+
+Because it looks a lot like it creates this dialog that is shown when trying to connect to the game server:
+
+!![2/client-1.png]
+
+
+So let's call it `CreateGameDialog` and come back to it later.
+
+
+Further down, we find a function that looks like it's used to update the game files, calling it `Update_PatchFile` feels good enough for now.
+
+!![2/switch-3.png]
+
+
+Inside, there's a very clearly assert-like function.
+
+!![2/assert.png]
+
+
+It should come in very handy later on, as it displays valuable information about the surrounding code.
+
+
+And as an ending to part 2, we find the address of the object that holds the socket created in `CreateSocket`:
+
+!![2/create-socket.png]
+
+
+A lot of assumptions have been made at this point, but as the picture gets clearer, we will simply adjust what we got wrong.
+
+No worries.
+
+
+To be continued in part 3...
