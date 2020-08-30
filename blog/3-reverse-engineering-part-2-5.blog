@@ -1,0 +1,7 @@
+Title: Reverse engineering - part 2.5
+Date: 2020-08-30
+---
+This is an even shorter one than the last, detailing how the client reads its sprites file.
+
+
+[Read the details @ GitHub (Tibia71SprExtractor)](https://github.com/Szune/Tibia71SprExtractor)

@@ -1,4 +1,5 @@
 from os import walk
+from pathlib import Path
 import shutil
 import re
 
@@ -133,6 +134,9 @@ def get_template(path, parts):
         content = content.replace('<{' + part.name + '}/>', part.content)
     return content
 
+# make sure folders exist
+Path("./docs-generated/blog").mkdir(parents=True, exist_ok=True)
+Path("./docs-generated/assets").mkdir(parents=True, exist_ok=True)
 
 templ_part_files = get_files('.', '.templpart')
 templ_parts = []
