@@ -134,9 +134,18 @@ def get_template(path, parts):
         content = content.replace('<{' + part.name + '}/>', part.content)
     return content
 
+print("Initializing ...")
+print("..Removing old generated version")
+try:
+    shutil.rmtree("docs-generated/")
+except e:
+    print(f"Exiting: Failed to remove docs/\n{e}")
+    raise SystemExit
+print("..Creating folders")
 # make sure folders exist
 Path("./docs-generated/blog").mkdir(parents=True, exist_ok=True)
 Path("./docs-generated/assets").mkdir(parents=True, exist_ok=True)
+
 
 templ_part_files = get_files('.', '.templpart')
 templ_parts = []
