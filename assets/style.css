@@ -59,6 +59,15 @@ a:hover {
 	border-radius: 5px;
 }
 
+.about-page {
+	width:100%;
+	background: #080707;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	padding-bottom: 0.5rem;
+	border-radius: 5px;
+}
+
 .page-header {
 	font-size: 1.5rem;
 	text-align: center;

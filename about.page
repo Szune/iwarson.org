@@ -1,8 +1,8 @@
 Title: | About
 Date: 
 ---
-<div id="about" class="page">
-    <div class="page">
+<div id="about">
+    <div class="about-page">
         <div class="page-header">Experience - Programming languages</div>
         <div class="box-text">
             <table>
@@ -53,7 +53,7 @@ Date:
             </table>
         </div>
     </div>
-    <div class="page">
+    <div class="about-page">
         <div class="page-header">Becoming a developer</div>
         <div class="box-text">
             <p>
