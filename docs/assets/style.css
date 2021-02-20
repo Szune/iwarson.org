@@ -32,12 +32,12 @@ a:hover {
 }
 
 #header-inner {
-	width: 22rem;
+	width: 20rem;
 	margin: 0 auto;
 }
 
 #header-inner h1 {
-	font-size: 3rem;
+	font-size: 1.5rem;
 	font-weight: normal;
 	margin: 0;
 	text-align: center;
@@ -52,6 +52,7 @@ a:hover {
 }
 
 .page {
+	width:100%;
 	background: #080707;
 	margin-top: 1rem;
 	margin-bottom: 1rem;
@@ -63,10 +64,17 @@ a:hover {
 	text-align: center;
 	background: black;
 	color: #fff;
-	padding-left: 1rem;
-       	padding-right: 1rem;
-	padding-top: 0.5rem;
-	padding-bottom: 0.5rem;
+	padding: 0.5rem 1rem;
+	border-bottom: 1px solid #d53880;
+	border-radius: 5px;
+}
+
+.page-header-blog {
+	font-size: 1.5rem;
+	text-align: center;
+	background: black;
+	color: #fff;
+	padding: 0.5rem 1rem;
 	border-bottom: 1px solid #d53880;
 	border-radius: 5px;
 }
@@ -77,26 +85,28 @@ a:hover {
 	padding-top: 0.5rem;
 	padding-bottom: 0.5rem;
 	border-bottom: 1px solid #d53880;
+	height: 2.5rem;
 }
 
 .page-links {
 	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .page-link {
 	font-size: 1.5rem;
 }
 
-@media (min-width: 800px) and (orientation: landscape) {
-	.page-link {
-		font-size: 2rem;
-	}
+.page-image-link {
+	display: flex;
 }
 
 .page-link-separator {
 	margin: 0 1rem;
 	background: #d53880;
 	width: 3px;
+	height: 2.5rem;
 }
 
 #main {
@@ -107,14 +117,8 @@ a:hover {
 	max-width: 70rem;
 }
 
-@media (min-width: 800px) and (orientation: landscape) {
-	#main {
-		display: flex;
-		flex-flow: row wrap;
-		margin: 0 auto;
-		padding: 0 1rem;
-		max-width: 70rem;
-	}
+.blog-index li {
+	margin-top: 2rem;
 }
 
 .img-blog {
@@ -158,24 +162,8 @@ a:hover {
 	border-left: 1px dashed #d53880;
 }
 
-#blog {
-	width: 100%;
-}
-
-#github {
-	width: 100%;
-}
-
-#music {
-	width: 100%;
-}
-
 #sidebar {
 	flex: 1;
-}
-
-#about {
-	width: 100%;
 }
 
 .box-text {
@@ -190,19 +178,13 @@ a:hover {
 	text-align: center;
 }
 
-@media (min-width: 800px) and (orientation: landscape) {
-	.list {
-		display: grid;
-		grid-template-columns: repeat(2,1fr);
-		grid-gap: 1rem;
-		margin: 1rem;
-		text-align: center;
-	}
-}
-
 
 .list-item {
 	font-size: 1rem;
+}
+
+.link-cursor {
+	cursor: pointer;
 }
 
 .link-button {
@@ -212,17 +194,6 @@ a:hover {
 	border-radius: 5px;
 	border: 1px solid #65aae7;
 }
-
-@media (min-width: 800px) and (orientation: landscape) {
-	.link-button {
-		width: 20rem;
-		background: black;
-		padding: 0.5rem;
-		border-radius: 5px;
-		border: 1px solid #65aae7;
-	}
-}
-
 
 .list-item a:hover .link-button {
 	border: 1px solid #003078;
@@ -238,78 +209,116 @@ a:hover {
 	width: 17rem;
 }
 
-@media (min-width: 800px) and (orientation: landscape) {
-	.tooltip {
-		background: #080707;
-		padding: 0.5rem;
-		border: 1px solid #d53880;
-		border-radius: 5px;
-		color: #fff;
-		margin-top: 0.5rem;
-		width: 20rem;
-	}
-}
-
-
 .flex-center {
 	display: flex;
 	justify-content: center;
 
 }
 
-.image-closer {
-	display: none;
-	position: relative;
-	width: 20px;
-	height: 20px;
-}
-
-.image-holder {
-	position: absolute;
-	top: 2rem;
-	left: 50%;
+#imv {
 	display: flex;
-	justify-content: center;
-}
-
-.image-holder section:target {
-	display: block;
-	position: absolute;
-	transition: all 2s ease-in;
-	background: black;
-	border: 1px solid #d53880;
-	border-radius: 5px;
-	text-align: center;
-	padding: 2rem;
-	overflow: scroll;
-	width: fit-content;
-	height: fit-content;
-	max-width: 1000px;
-	max-height: 800px;
-}
-
-.image-holder section {
-	display: none;
-}
-
-section:target ~ .image-closer {
-	display: block;
-	position: relative;
+	position: fixed;
 	left: 0;
 	top: 0;
 	width: 100%;
 	height: 100%;
-	text-align: right;
-	font-size: 32px;
+	max-width: 100vw;
+	max-height: 100vh;
+	justify-content: center;
+	align-items: center;
+	background: rgba(22,22,22,0.7);
+	visibility: collapse;
 }
 
-/*
-.image-holder section:target img {
-	width: auto;
-	height: auto;
+.imv-modal {
+	box-shadow: 2px 2px 5px #d53880;
+	background: black;
+	padding: 0.5rem;
 }
 
-.image-holder img {
-	width: 0px;
-	height: 0px;
-}*/
+#imv-img {
+	display: flex;
+	object-fit: contain;
+	max-height: 80vh;
+	max-width: 100%;
+	cursor: pointer;
+}
+
+.imv-visible {
+	visibility: visible !important;
+}
+
+.imv-enlarge {
+	height:3rem;
+    margin-top:1rem;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table th, table td {
+	padding: 8px;
+}
+
+tr {
+	vertical-align: top;
+	text-align: left;
+}
+
+table thead tr th, table thead tr {
+	border-bottom: 2px solid white;
+}
+
+table tbody tr td {
+	border-left: 1px dashed white;
+	border-right: 1px dashed white;
+	border-bottom: 1px dashed white;
+}
+
+
+@media (min-width: 800px) and (orientation: landscape) {
+	.page-links-container {
+		height: 3rem;
+	}
+	.page-link {
+		font-size: 2rem;
+	}
+	.page-link-separator {
+		margin: 0 1.5rem;
+		height: 3rem;
+	}
+	.page-header-blog {
+		border-right: 1px solid #d53880;
+        border-bottom: 0;
+	}
+	.list {
+		grid-template-columns: repeat(2,1fr);
+	}
+	.link-button {
+		width: 20rem;
+	}
+	.tooltip {
+		width: 20rem;
+	}
+
+	#header-inner {
+		width: 42rem;
+		margin: 0 auto;
+	}
+
+	#header-inner h1 {
+		font-size: 3rem;
+		font-weight: normal;
+		margin: 0;
+		text-align: center;
+	}
+
+	#blog {
+		display: flex;
+	}
+
+	.blog-index li {
+		margin-top: 1rem;
+	}
+}

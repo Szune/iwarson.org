@@ -76,8 +76,8 @@ def apply_template(templ, title, content, root = "", date = ""):
 
 def get_page_and_apply_template(templ, s):
     lines = s.splitlines()
-    title = md_tag(lines[0], "Title:\W?(.*?)\W?$", "", "")
-    date = md_tag(lines[1], "Date:\W?(.*?)\W?$", "", "")
+    title = md_tag(lines[0], "Title:\s*(.*?)\s*$", "", "")
+    date = md_tag(lines[1], "Date:\s*(.*?)\s*?$", "", "")
     content = ""
     if lines[2].strip() != "---":
         raise Exception("Misformed page file") 
@@ -91,8 +91,8 @@ def get_page_and_apply_template(templ, s):
 def blog_write(s, templ, blog_posts, file_name):
     st = MdSt()
     lines = s.splitlines()
-    title = md_tag(lines[0], "Title:\W?(.*?)\W?$", "", "")
-    date = md_tag(lines[1], "Date:\W?(.*?)\W?$", "", "")
+    title = md_tag(lines[0], "Title:\s*(.*?)\s*$", "", "")
+    date = md_tag(lines[1], "Date:\s*(.*?)\s*?$", "", "")
     content = ""
     if lines[2].strip() != "---":
         raise Exception("Misformed blog file") 

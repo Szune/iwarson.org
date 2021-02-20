@@ -1,0 +1,15 @@
+Title: Reverse engineering - part 3 - open source!
+Date: 2021-02-20
+---
+The project is now fully open source!
+
+There's a world server, a login server and a map editor to enable some basic gameplay.
+
+
+Get it all over at my GitHub:
+
+[Tibia 7.1 World Server](https://github.com/Szune/ArchivalTibiaV71WorldServer)
+
+[Tibia 7.1 Login Server](https://github.com/Szune/ArchivalTibiaV71LoginServer)
+
+[Tibia 7.1 Map Editor](https://github.com/Szune/ArchivalTibiaV71MapEditor)

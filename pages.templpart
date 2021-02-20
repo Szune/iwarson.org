@@ -1,7 +1,7 @@
 <div class="page-links-container flex-center">
 	<div class="page-links">
 		<div class="page-link">
-			<a href="{%ROOT%}index.html">Home</a>
+			<a href="{%ROOT%}index.html">Projects</a>
 		</div>
 		<div class="page-link-separator">
 		</div>
@@ -12,6 +12,11 @@
 		</div>
 		<div class="page-link">
 			<a href="{%ROOT%}about.html">About</a>
+		</div>
+		<div class="page-link-separator">
+		</div>
+		<div class="page-link">
+			<a href="https://github.com/Szune/"><img src="{%ROOT%}assets/gh-32.png" class="page-image-link"></a>
 		</div>
 	</div>
 </div>

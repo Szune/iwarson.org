@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 	<head>
-		<title>Reverse engineering - part 2 | Erik Iwarson</title>
+		<title>Reverse engineering - part 2 | Carl Erik Patrik Iwarson</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="../assets/style.css">
@@ -10,7 +10,7 @@
 		<header>
 	<div id="header-inner">
 		<a id="header-link" href="index.html">
-				<h1>Erik Iwarson</h1>
+				<h1>Carl Erik Patrik Iwarson</h1>
 				<h3>(Musician && Developer)</h3>
 				<!-- See, I know programming.. -->
 		</a>
@@ -20,7 +20,7 @@
 		<div class="page-links-container flex-center">
 	<div class="page-links">
 		<div class="page-link">
-			<a href="../index.html">Home</a>
+			<a href="../index.html">Projects</a>
 		</div>
 		<div class="page-link-separator">
 		</div>
@@ -32,23 +32,29 @@
 		<div class="page-link">
 			<a href="../about.html">About</a>
 		</div>
+		<div class="page-link-separator">
+		</div>
+		<div class="page-link">
+			<a href="https://github.com/Szune/"><img src="../assets/gh-32.png" class="page-image-link"></a>
+		</div>
 	</div>
 </div>
 
 
 		<div id="main">
-			<div id="blog" class="page">
+			<div class="page">
 				<div class="page-header">Reverse engineering - part 2</div>
 				<span class="date">2020-08-24</span>
 				<div class="box-text">
-After naming the function in the previous post <code class="blog-code">CreateSocket</code>, it was time to move on.<br><br>So I started looking at all the nested function calls and ended up finding a switch statement:<br><a href="assets/2/switch-1.png"><img class="img-blog" src="assets/2/switch-1.png"></a><br><br>Thanks to the magic of strings, this part was a lot easier to understand than the previous one:<br><a href="assets/2/switch-2.png"><img class="img-blog" src="assets/2/switch-2.png"></a><br><br>Because it looks a lot like it creates this dialog that is shown when trying to connect to the game server:<br><a href="assets/2/client-1.png"><img class="img-blog" src="assets/2/client-1.png"></a><br><br>So let's call it <code class="blog-code">CreateGameDialog</code> and come back to it later.<br><br>Further down, we find a function that looks like it's used to update the game files, calling it <code class="blog-code">Update_PatchFile</code> feels good enough for now.<br><a href="assets/2/switch-3.png"><img class="img-blog" src="assets/2/switch-3.png"></a><br><br>Inside, there's a very clearly assert-like function.<br><a href="assets/2/assert.png"><img class="img-blog" src="assets/2/assert.png"></a><br><br>It should come in very handy later on, as it displays valuable information about the surrounding code.<br><br>And as an ending to part 2, we find the address of the object that holds the socket created in <code class="blog-code">CreateSocket</code>:<br><a href="assets/2/create-socket.png"><img class="img-blog" src="assets/2/create-socket.png"></a><br><br>A lot of assumptions have been made at this point, but as the picture gets clearer, we will simply adjust what we got wrong.<br>No worries.<br><br>To be continued in part 3...
+After naming the function in the previous post <code class="blog-code">CreateSocket</code>, it was time to move on.<br><br>So I started looking at all the nested function calls and ended up finding a switch statement:<br><a href="assets/2/switch-1.png"><img class="img-blog" src="assets/2/switch-1.png"></a><br><br>Thanks to the magic of strings, this part was a lot easier to understand than the previous one:<br><a href="assets/2/switch-2.png"><img class="img-blog" src="assets/2/switch-2.png"></a><br><br>Because it looks a lot like it creates this dialog that is shown when trying to connect to the game server:<br><a href="assets/2/client-1.jpg"><img class="img-blog" src="assets/2/client-1.jpg"></a><br><br>So let's call it <code class="blog-code">CreateGameDialog</code> and come back to it later.<br><br>Further down, we find a function that looks like it's used to update the game files, calling it <code class="blog-code">Update_PatchFile</code> feels good enough for now.<br><a href="assets/2/switch-3.png"><img class="img-blog" src="assets/2/switch-3.png"></a><br><br>Inside, there's a very clearly assert-like function.<br><a href="assets/2/assert.png"><img class="img-blog" src="assets/2/assert.png"></a><br><br>It should come in very handy later on, as it displays valuable information about the surrounding code.<br><br>And as an ending to part 2, we find the address of the object that holds the socket created in <code class="blog-code">CreateSocket</code>:<br><a href="assets/2/create-socket.png"><img class="img-blog" src="assets/2/create-socket.png"></a><br><br>A lot of assumptions have been made at this point, but as the picture gets clearer, we will simply adjust what we got wrong.<br>No worries.<br><br>To be continued in part 3...
 				<p class="back-blog"><a href="../blog.html">Back to blog index</a></p>
 				</div>
 			</div>
 			<footer>
-	Copyright 2020 Erik Iwarson
+	Copyright © 2020-2021 Carl Erik Patrik Iwarson
 </footer>
 
+<script src="../assets/imv.js"></script>
 		</div>
 	</body>
 </html>

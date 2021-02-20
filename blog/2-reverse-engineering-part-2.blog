@@ -16,7 +16,7 @@ Thanks to the magic of strings, this part was a lot easier to understand than th
 
 Because it looks a lot like it creates this dialog that is shown when trying to connect to the game server:
 
-!![2/client-1.png]
+!![2/client-1.jpg]
 
 
 So let's call it `CreateGameDialog` and come back to it later.
