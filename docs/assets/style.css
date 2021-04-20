@@ -285,8 +285,7 @@ table tbody tr td {
 	border-bottom: 1px dashed white;
 }
 
-
-@media (min-width: 780px) and (orientation: landscape) {
+@media only screen and (min-width: 780px) {
 	.page-links-container {
 		height: 3rem;
 	}
@@ -332,7 +331,7 @@ table tbody tr td {
 	}
 }
 
-@media (min-width: 1100px) and (orientation: landscape) {
+@media only screen and (min-width: 1100px) {
 	.list {
 		grid-template-columns: repeat(3,1fr);
 	}
