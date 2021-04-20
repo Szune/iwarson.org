@@ -13,4 +13,6 @@ shutil.copytree('docs-generated/', 'docs', ignore=shutil.ignore_patterns('*.*~',
 print("..Writing CNAME")
 with open('docs/CNAME', 'w+') as f:
     f.write("www.iwarson.org")
+print("..Copying favicon.ico")
+shutil.copyfile('favicon.ico', 'docs/favicon.ico')
 print("Success!")
