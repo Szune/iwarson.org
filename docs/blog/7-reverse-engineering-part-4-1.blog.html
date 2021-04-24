@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<title>Reverse engineering - part 4.1 - full effect | Carl Erik Patrik Iwarson</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="../assets/style.css">
+	</head>
+	<body>
+		<header>
+	<div id="header-inner">
+		<a id="header-link" href="index.html">
+				<h1>Carl Erik Patrik Iwarson</h1>
+				<h3>(Musician && Developer)</h3>
+				<!-- See, I know programming.. -->
+		</a>
+	</div>
+</header>
+
+		<div class="page-links-container flex-center">
+	<div class="page-links">
+		<div class="page-link">
+			<a href="../index.html">Projects</a>
+		</div>
+		<div class="page-link-separator">
+		</div>
+		<div class="page-link">
+			<a href="../blog.html">Blog</a>
+		</div>
+		<div class="page-link-separator">
+		</div>
+		<div class="page-link">
+			<a href="../about.html">About</a>
+		</div>
+		<div class="page-link-separator">
+		</div>
+		<div class="page-link">
+			<a href="https://github.com/Szune/"><img src="../assets/gh-32.png" class="page-image-link"></a>
+		</div>
+	</div>
+</div>
+
+
+		<div id="main">
+			<div class="page">
+				<div class="page-header">Reverse engineering - part 4.1 - full effect</div>
+				<span class="date">2021-04-24</span>
+				<div class="box-text">
+To get the full effect of the rune, we need the "hit" effect as well:<br><a href="assets/7/projectile-and-hit-effect.gif"><img class="img-blog" src="assets/7/projectile-and-hit-effect.gif"></a><br><br>All we have to do is to also send the much simpler 0x83 (131) packet, which has the following structure:<pre class="blog-pre"><code class="blog-code-block">U16 length
+U8 packet id
+U16 target X
+U16 target Y
+U8 target Z
+U8 magic effect id (we send the id subtracted by 1 because the client adds 1 when it parses the packet)
+</code></pre>
+<br><br>
+				<p class="back-blog"><a href="../blog.html">Back to blog index</a></p>
+				</div>
+			</div>
+			<footer>
+	Copyright © 2020-2021 Carl Erik Patrik Iwarson
+</footer>
+
+<script src="../assets/imv_blog.js"></script>
+		</div>
+	</body>
+</html>

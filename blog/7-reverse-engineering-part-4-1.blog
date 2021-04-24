@@ -1,0 +1,19 @@
+Title: Reverse engineering - part 4.1 - full effect
+Date: 2021-04-24
+---
+To get the full effect of the rune, we need the "hit" effect as well:
+
+!![7/projectile-and-hit-effect.gif]
+
+
+All we have to do is to also send the much simpler 0x83 (131) packet, which has the following structure:
+```
+U16 length
+U8 packet id
+U16 target X
+U16 target Y
+U8 target Z
+U8 magic effect id (we send the id subtracted by 1 because the client adds 1 when it parses the packet)
+```
+
+
