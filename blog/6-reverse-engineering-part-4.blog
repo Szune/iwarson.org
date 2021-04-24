@@ -1,0 +1,71 @@
+Title: Reverse engineering - part 4 - projectiles
+Date: 2021-04-24
+---
+Arguably the most fun part of Tibia was PvP using runes that you had to aim.
+
+So this time we're going to take a look at how the client parses projectile packets.
+
+
+Before we begin, this is the current state of the server:
+
+!![6/rune-packet-optimized.gif]
+
+
+(I will come back to the parts between the last blog post and this one later on.)
+
+
+At this point I have defined a lot of the client's internal packet parser and I happen to know that the client expects packet id 0x85 (133) for projectiles.
+
+
+The function looks pretty much as follows (`AnimateDistanceProjectile` is a lot more involved):
+!![6/parse-projectile-packet.png]
+
+
+What was "interesting" this time was that it seemed like the client wouldn't respond to the packet at all, no matter what I sent.
+
+
+As it turns out, you have to actually call the `Send` function in your own code if you want the client to receive it..
+
+
+What's even more embarrassing is that I had to debug the client through ollydbg to figure that out.
+
+After setting a breakpoint at the starting address of the `ParseDistanceProjectilePacket` and trying to throw a rune I __finally__ realized that the client never received the packet (and, after a while, why).
+
+
+Luckily it was still useful getting used to ollydbg again, because now the client received the packet but didn't do anything after parsing it.
+
+
+Time to set a breakpoint again and actually step through the code this time!
+
+!![6/ollydbg.png]
+
+(picture of ollydbg without the breakpoint toggled, just imagine this but the selected line is redder)
+
+
+
+Since I don't know too much assembly, I used Ghidra to follow the addresses in ollydbg.
+
+
+Apparently there's an if statement that performs an early return based on the Z coordinate?
+
+!![6/animate-distance-projectile.png]
+
+
+Cool, we're getting a better understanding of what's going on and where it's going wrong :-)
+
+
+So I take a look at my code again and, for some unknown reason, I added the source pos to the target pos (literally `destPos += sourcePos`) when I first wrote the function? That can't be right...
+
+Let's try removing that, now that we're actually sending the packet.
+
+
+Oh.
+
+It works now.. The projectile packet is parsed correctly and animates :-D
+!![6/rune-packet-working-optimized.gif]
+
+
+I intend to cover more of the early process of figuring out where the packets are parsed and all that in later blog posts.
+
+
+Thanks to [ezgif.com](https://ezgif.com) the gifs are less than half the original size :-)

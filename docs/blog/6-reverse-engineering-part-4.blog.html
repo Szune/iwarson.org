@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<title>Reverse engineering - part 4 - projectiles | Carl Erik Patrik Iwarson</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="../assets/style.css">
+	</head>
+	<body>
+		<header>
+	<div id="header-inner">
+		<a id="header-link" href="index.html">
+				<h1>Carl Erik Patrik Iwarson</h1>
+				<h3>(Musician && Developer)</h3>
+				<!-- See, I know programming.. -->
+		</a>
+	</div>
+</header>
+
+		<div class="page-links-container flex-center">
+	<div class="page-links">
+		<div class="page-link">
+			<a href="../index.html">Projects</a>
+		</div>
+		<div class="page-link-separator">
+		</div>
+		<div class="page-link">
+			<a href="../blog.html">Blog</a>
+		</div>
+		<div class="page-link-separator">
+		</div>
+		<div class="page-link">
+			<a href="../about.html">About</a>
+		</div>
+		<div class="page-link-separator">
+		</div>
+		<div class="page-link">
+			<a href="https://github.com/Szune/"><img src="../assets/gh-32.png" class="page-image-link"></a>
+		</div>
+	</div>
+</div>
+
+
+		<div id="main">
+			<div class="page">
+				<div class="page-header">Reverse engineering - part 4 - projectiles</div>
+				<span class="date">2021-04-24</span>
+				<div class="box-text">
+Arguably the most fun part of Tibia was PvP using runes that you had to aim.<br>So this time we're going to take a look at how the client parses projectile packets.<br><br>Before we begin, this is the current state of the server:<br><a href="assets/6/rune-packet-optimized.gif"><img class="img-blog" src="assets/6/rune-packet-optimized.gif"></a><br><br>(I will come back to the parts between the last blog post and this one later on.)<br><br>At this point I have defined a lot of the client's internal packet parser and I happen to know that the client expects packet id 0x85 (133) for projectiles.<br><br>The function looks pretty much as follows (<code class="blog-code">AnimateDistanceProjectile</code> is a lot more involved):<a href="assets/6/parse-projectile-packet.png"><img class="img-blog" src="assets/6/parse-projectile-packet.png"></a><br><br>What was "interesting" this time was that it seemed like the client wouldn't respond to the packet at all, no matter what I sent.<br><br>As it turns out, you have to actually call the <code class="blog-code">Send</code> function in your own code if you want the client to receive it..<br><br>What's even more embarrassing is that I had to debug the client through ollydbg to figure that out.<br>After setting a breakpoint at the starting address of the <code class="blog-code">ParseDistanceProjectilePacket</code> and trying to throw a rune I <i>finally</i> realized that the client never received the packet (and, after a while, why).<br><br>Luckily it was still useful getting used to ollydbg again, because now the client received the packet but didn't do anything after parsing it.<br><br>Time to set a breakpoint again and actually step through the code this time!<br><a href="assets/6/ollydbg.png"><img class="img-blog" src="assets/6/ollydbg.png"></a><br>(picture of ollydbg without the breakpoint toggled, just imagine this but the selected line is redder)<br><br><br>Since I don't know too much assembly, I used Ghidra to follow the addresses in ollydbg.<br><br>Apparently there's an if statement that performs an early return based on the Z coordinate?<br><a href="assets/6/animate-distance-projectile.png"><img class="img-blog" src="assets/6/animate-distance-projectile.png"></a><br><br>Cool, we're getting a better understanding of what's going on and where it's going wrong :-)<br><br>So I take a look at my code again and, for some unknown reason, I added the source pos to the target pos (literally <code class="blog-code">destPos += sourcePos</code>) when I first wrote the function? That can't be right...<br>Let's try removing that, now that we're actually sending the packet.<br><br>Oh.<br>It works now.. The projectile packet is parsed correctly and animates :-D<a href="assets/6/rune-packet-working-optimized.gif"><img class="img-blog" src="assets/6/rune-packet-working-optimized.gif"></a><br><br>I intend to cover more of the early process of figuring out where the packets are parsed and all that in later blog posts.<br><br>Thanks to <a href="https://ezgif.com">ezgif.com</a> the gifs are less than half the original size :-)
+				<p class="back-blog"><a href="../blog.html">Back to blog index</a></p>
+				</div>
+			</div>
+			<footer>
+	Copyright © 2020-2021 Carl Erik Patrik Iwarson
+</footer>
+
+<script src="../assets/imv_blog.js"></script>
+		</div>
+	</body>
+</html>

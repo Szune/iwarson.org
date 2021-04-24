@@ -48,9 +48,9 @@ def md_block_tag(s, tag, tagVar, st):
 def md_replace(s, st):
     last = st.in_block
     if not st.in_block:
-        s = md_tag(s, '###\W?(.*?)\W?$', '<h3>','</h3>')
-        s = md_tag(s, '##\W?(.*?)\W?$','<h2>','</h2>')
-        s = md_tag(s, '#\W?(.*?)\W?$','<h1>','</h1>')
+        s = md_tag(s, '^###\W?(.*?)\W?$', '<h3>','</h3>')
+        s = md_tag(s, '^##\W?(.*?)\W?$','<h2>','</h2>')
+        s = md_tag(s, '^#\W?(.*?)\W?$','<h1>','</h1>')
         s = md_tag(s, '\*\*\W?(.*?)\W?\*\*','<b>','</b>')
         s = md_tag(s, '__\W?(.*?)\W?__','<i>','</i>')
         s = md_link_tag(s)

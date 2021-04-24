@@ -4,3 +4,5 @@
 docs-backup/
 docs-generated/
 blog-backup/
+.idea/
+__pycache__/

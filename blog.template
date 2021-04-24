@@ -20,7 +20,7 @@
 				</div>
 			</div>
 			<{FOOTER}/>
-<script src="{%ROOT%}assets/imv.js"></script>
+<script src="{%ROOT%}assets/imv_blog.js"></script>
 		</div>
 	</body>
 </html>
