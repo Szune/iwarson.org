@@ -2,6 +2,14 @@
 	box-sizing: border-box;
 }
 
+/*
+.================================.
+|                                |
+|           dark theme           |
+|                                |
+`================================´
+*/
+
 body {
 	font-family: Consolas, Ubuntu, Calibri;
 	margin: 0;
@@ -156,6 +164,8 @@ a:hover {
 	font-size: 1rem;
 	font-weight: bold;
 	background: darkred;
+	border: 1px solid #d53880;
+	border-radius: 5px;
 }
 
 .blog-code-block {
@@ -333,6 +343,352 @@ table tbody tr td {
 
 @media only screen and (min-width: 1100px) {
 	.list {
+		grid-template-columns: repeat(3,1fr);
+	}
+}
+
+/*
+.=================================.
+|                                 |
+|           light theme           |
+|                                 |
+`=================================´
+*/
+
+body.light {
+	font-family: Consolas, Ubuntu, Calibri;
+	margin: 0;
+	background: #AFA;
+	color: black;
+	word-wrap: break-word;
+}
+
+.light header {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+	border-bottom: 1px solid #d53880;
+	background: #AFA;
+}
+
+.light footer {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.light a {
+	text-decoration: underline;
+	color: black;
+}
+
+.light a:hover {
+	color: #005048;
+	text-decoration:underline
+}
+
+.light #header-inner {
+	width: 20rem;
+	margin: 0 auto;
+}
+
+.light #header-inner h1 {
+	font-size: 1.5rem;
+	font-weight: normal;
+	margin: 0;
+	text-align: center;
+}
+
+.light #header-inner h3 {
+	font-size: 1rem;
+	font-weight: normal;
+	padding-bottom: 0.5rem;
+	margin: 0;
+	text-align: center;
+}
+
+.light .page {
+	width:100%;
+	background: #AFA;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	border-radius: 5px;
+}
+
+.light .about-page {
+	width:100%;
+	background: #AFA;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	padding-bottom: 0.5rem;
+	border-radius: 5px;
+}
+
+.light .page-header {
+	font-size: 1.5rem;
+	text-align: center;
+	background: #AFA;
+	color: black;
+	padding: 0.5rem 1rem;
+	border-bottom: 1px solid #d53880;
+	border-radius: 5px;
+}
+
+.light .page-header-blog {
+	font-size: 1.5rem;
+	text-align: center;
+	background: #AFA;
+	color: black;
+	padding: 0.5rem 1rem;
+	border-bottom: 1px solid #d53880;
+	border-radius: 5px;
+}
+
+.light .page-links-container {
+	border-radius: 5px;
+	background: #AFA;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	border-bottom: 1px solid #d53880;
+	height: 2.5rem;
+}
+
+.light .page-links {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.light .page-link {
+	font-size: 1.5rem;
+}
+
+.light .page-image-link {
+	display: flex;
+}
+
+.light .page-link-separator {
+	margin: 0 1rem;
+	background: #d53880;
+	width: 3px;
+	height: 2.5rem;
+}
+
+.light #main {
+	display: flex;
+	flex-flow: row wrap;
+	margin: 0 auto;
+	padding: 0 1rem;
+	max-width: 70rem;
+}
+
+.light .blog-index li {
+	margin-top: 2rem;
+}
+
+.light .img-blog {
+	margin: 5px;
+	max-width: 100%;
+}
+
+.light .back-blog {
+	border-top: 1px dashed #d53880;
+	margin-top: 40px;
+	margin-bottom: 10px;
+	padding-top: 10px;
+	width: 100%;
+	display: block;
+}
+
+.light .blog-pre {
+	font-weight: bold;
+	border: 1px dashed #d53880;
+	overflow: auto;
+	padding: 10px;
+}
+
+.light .blog-code {
+	padding: 0px 3px;
+	font-size: 1rem;
+	font-weight: bold;
+	background: #5F5;
+	border: 1px solid #d53880;
+	border-radius: 5px;
+}
+
+.light .blog-code-block {
+	font-size: 100%;
+	overflow: auto;
+	word-wrap: normal;
+}
+
+.light .date {
+	border-top: 1px solid #d53880;
+	border-right: 1px dashed #d53880;
+	border-bottom: 1px dashed #d53880;
+	border-left: 1px dashed #d53880;
+}
+
+.light #sidebar {
+	flex: 1;
+}
+
+.light .box-text {
+	margin: 1rem;
+}
+
+.light .list {
+	display: grid;
+	grid-template-columns: repeat(1,1fr);
+	grid-gap: 1rem;
+	margin: 1rem;
+	text-align: center;
+}
+
+
+.light .list-item {
+	font-size: 1rem;
+}
+
+.light .link-cursor {
+	cursor: pointer;
+}
+
+.light .link-button {
+	width: 17rem;
+	background: #AFA;
+	padding: 0.5rem;
+	border-radius: 5px;
+	border: 1px solid #65aae7;
+}
+
+.light .list-item a:hover .link-button {
+	border: 1px solid #003078;
+}
+
+.light .tooltip {
+	background: #AFA;
+	padding: 0.5rem;
+	border: 1px solid #d53880;
+	border-radius: 5px;
+	color: black;
+	margin-top: 0.5rem;
+	width: 17rem;
+}
+
+.light .flex-center {
+	display: flex;
+	justify-content: center;
+
+}
+
+.light #imv {
+	display: flex;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	max-width: 100vw;
+	max-height: 100vh;
+	justify-content: center;
+	align-items: center;
+	background: rgba(22,22,22,0.7);
+	visibility: collapse;
+}
+
+.light .imv-modal {
+	box-shadow: 2px 2px 5px #d53880;
+	background: #AFA;
+	padding: 0.5rem;
+}
+
+.light #imv-img {
+	display: flex;
+	object-fit: contain;
+	max-height: 80vh;
+	max-width: 100%;
+	cursor: pointer;
+}
+
+.light .imv-visible {
+	visibility: visible !important;
+}
+
+.light .imv-enlarge {
+	height:3rem;
+    margin-top:1rem;
+}
+
+.light table {
+	border-collapse: collapse;
+}
+
+.light table th, table td {
+	padding: 8px;
+}
+
+.light tr {
+	vertical-align: top;
+	text-align: left;
+}
+
+.light table thead tr th, table thead tr {
+	border-bottom: 2px solid white;
+}
+
+.light table tbody tr td {
+	border-left: 1px dashed white;
+	border-right: 1px dashed white;
+	border-bottom: 1px dashed white;
+}
+
+@media only screen and (min-width: 780px) {
+	.light .page-links-container {
+		height: 3rem;
+	}
+	.light .page-link {
+		font-size: 2rem;
+	}
+	.light .page-link-separator {
+		margin: 0 1.5rem;
+		height: 3rem;
+	}
+	.light .page-header-blog {
+		border-right: 1px solid #d53880;
+        border-bottom: 0;
+	}
+	.light .list {
+		grid-template-columns: repeat(2,1fr);
+	}
+	.light .link-button {
+		width: 20rem;
+	}
+	.light .tooltip {
+		width: 20rem;
+	}
+
+	.light #header-inner {
+		width: 42rem;
+		margin: 0 auto;
+	}
+
+	.light #header-inner h1 {
+		font-size: 3rem;
+		font-weight: normal;
+		margin: 0;
+		text-align: center;
+	}
+
+	.light #blog {
+		display: flex;
+	}
+
+	.light .blog-index li {
+		margin-top: 1rem;
+	}
+}
+
+@media only screen and (min-width: 1100px) {
+	.light .list {
 		grid-template-columns: repeat(3,1fr);
 	}
 }

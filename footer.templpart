@@ -1,3 +1,4 @@
 <footer>
-	Copyright © 2020-2021 Carl Erik Patrik Iwarson
+	Copyright © 2020-2023 Carl Erik Patrik Iwarson
 </footer>
+<script src="{%ROOT%}assets/util.js"></script>

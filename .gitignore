@@ -1,6 +1,7 @@
 *.swp
 *.*~
 *.ei
+*.zip
 docs-backup/
 docs-generated/
 blog-backup/

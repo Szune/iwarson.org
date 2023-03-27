@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<title>Why I like Vim - part 1 | Carl Erik Patrik Iwarson</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="../assets/style.css">
+	</head>
+	<body>
+		<header>
+	<div id="header-inner">
+		<a id="header-link" href="../index.html">
+				<h1>Carl Erik Patrik Iwarson</h1>
+				<h3>(Musician && Developer)</h3>
+				<!-- See, I know programming.. -->
+		</a>
+		<a href="#" id="lightmodetoggle"><h3>«Light theme toggle» (Warning: WIP)</h3></a>
+	</div>
+</header>
+
+		<div class="page-links-container flex-center">
+	<div class="page-links">
+		<div class="page-link">
+			<a href="../index.html">Projects</a>
+		</div>
+		<div class="page-link-separator">
+		</div>
+		<div class="page-link">
+			<a href="../blog.html">Blog</a>
+		</div>
+		<div class="page-link-separator">
+		</div>
+		<div class="page-link">
+			<a href="../about.html">About</a>
+		</div>
+		<div class="page-link-separator">
+		</div>
+		<div class="page-link">
+			<a href="https://github.com/Szune/"><img src="../assets/gh-32.png" class="page-image-link"></a>
+		</div>
+	</div>
+</div>
+
+
+		<div id="main">
+			<div class="page">
+				<div class="page-header">Why I like Vim - part 1</div>
+				<span class="date">2023-03-27</span>
+				<div class="box-text">
+Having used <a href="https://github.com/vim/vim">Vim</a>, <a href="https://github.com/neovim/neovim/">Neovim</a>, <a href="https://marketplace.visualstudio.com/items?itemName=JaredParMSFT.VsVim">VsVim</a>, <a href="https://marketplace.visualstudio.com/items?itemName=vscodevim.vim">VsCodeVim</a>, vi(m) bindings in terminals and <a href="https://github.com/JetBrains/ideavim">IdeaVim (JetBrains)</a>, it's a tool I've really come to enjoy.<br><br>For the most part, I use it because I think it's fun. However, it can often be more ergonomic as well due to requiring fewer keystrokes to perform some tasks.<br>Especially using macros.<br><br>One such case came up today.<br>While working on my app (Norwegian vocabulary helper thing), I had a use for some <a href="https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/combine.html">kotlinx.coroutines.flow.combine</a> functions that take more than 5 parameters.<br><br>This is how running the macro ended up looking, generating one implementation as a test and then 5 more:<br><a href="assets/8/vim-macro.gif"><img class="img-blog" src="assets/8/vim-macro.gif"></a><br><br>This can of course be done using other means, it's more to give an idea of what vim is capable of. :-)<br><br>How was it done in Vim? By going to the last line in the file and typing the following:<pre class="blog-pre"><code class="blog-code-block">qe?}&lt;cr&gt;V%0%yGpf&gt;F,byiwea, &lt;esc&gt;p^a$%2kA&lt;esc&gt;Yp^aw^ajf)byiwea, &lt;esc&gt;p^a2jf)byiwea, &lt;esc&gt;p^af{%2kYpkA,&lt;esc&gt;j0^ae^a3j%%2j@e5@e
+</code></pre>
+<br>What does that mean? Something like:<pre class="blog-pre"><code class="blog-code-block">&lt;cr&gt; = enter, &lt;esc&gt; = escape
+<br>qe - start recording a macro in register "e"
+?}&lt;cr&gt; - search backwards for "}"
+V - start selecting lines
+% - jump to matching pair of (), {}, [], etc
+0 - go to the start of the line
+%
+y - yank selection (copy selection to a vim register)
+G - go to the last line in the file
+p - paste from a vim register
+f&gt; - search forwards for "&gt;" on current line
+F, - search backwards for "," on current line
+b - move back a word
+yiw - yank in word (copy current word)
+e - move to the end of the current word
+a, &lt;esc&gt; - append ", "
+p
+^a - move to the first number to the right on the current line and increment that number
+$ - move to the end of the current line
+% - jump to matching pair
+2k - move up 2 lines
+A&lt;esc&gt; - hit the wrong key by mistake
+Y - yank current line
+p - paste
+^a
+w - move forward a word
+^a
+j - move down a line
+f) - search forwards for ")" on current line
+b - move back a word
+yiw - yank in word 
+e - move to the end of the current word
+a, &lt;esc&gt; - append ", "
+p
+^a
+2j - move down 2 lines
+f) - search forwards for ) on current line
+b
+yiw
+e
+a, &lt;esc&gt;
+p
+^a - increment next number on line
+f{ - search forwards for "{" on current line
+% - jump to matching pair
+2k - move up 2 lines
+Y - yank current line
+p - paste
+k
+A,&lt;esc&gt; - append ","
+j - move down a line
+0 - go to the start of the line
+^a
+e - move to the end of the current word
+^a
+3j
+% - jump to matching pair for no reason
+% - jump back to undo previous mistake
+2j - move enough to stop at the end of the new implementation, so that the macro is repeatable
+@e - run the macro in register "e" to see if it works
+5@e - run the macro 5 more times
+</code></pre>
+<br>How long did it take to come up with that combination? That's not the point - even if it had been quicker to just write the 6 implementations by hand, it would have been worse for my wrists. And less fun.<br><br>However, having used vim for some years now, this macro was definitely/probably quicker to come up with and type out.<br><br>That's pretty much it, I hope you take this opportunity to try Vim if it seems at all fun or interesting!<br>Or don't, it's really not important. :-)<br><br><b>Other interesting editors:</b><br><ul>
+    <li><a href="https://www.gnu.org/software/emacs/">Emacs</a></li>
+    <li><a href="https://github.com/helix-editor/helix">Helix</a></li>
+    <li><a href="https://github.com/mawww/kakoune">Kakoune</a></li>
+</ul>
+<br>
+				<p class="back-blog"><a href="../blog.html">Back to blog index</a></p>
+				</div>
+			</div>
+			<footer>
+	Copyright © 2020-2023 Carl Erik Patrik Iwarson
+</footer>
+<script src="../assets/util.js"></script>
+<script src="../assets/imv_blog.js"></script>
+		</div>
+	</body>
+</html>

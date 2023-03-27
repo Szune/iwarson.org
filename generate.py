@@ -44,6 +44,12 @@ def md_block_tag(s, tag, tagVar, st):
         st.in_block = not st.in_block
     return sub[0]
 
+def md_html_block_tag(s, tag, tagVar, st):
+    sub = re.subn(tag, tagVar, s)
+    if sub[1] > 0:
+        st.in_block = not st.in_block
+    return sub[0]
+
 
 def md_replace(s, st):
     last = st.in_block
@@ -53,13 +59,15 @@ def md_replace(s, st):
         s = md_tag(s, '^#\W?(.*?)\W?$','<h1>','</h1>')
         s = md_tag(s, '\*\*\W?(.*?)\W?\*\*','<b>','</b>')
         s = md_tag(s, '__\W?(.*?)\W?__','<i>','</i>')
-        s = md_link_tag(s)
-        s = md_int_img_with_url_tag(s)
-        s = md_int_img_tag(s)
-        s = md_ext_img_tag(s)
-        s = md_block_tag(s, '```', '<pre class="blog-pre"><code class="blog-code-block">',st)
+        s = md_int_img_with_url_tag(s) # !![url] (starts in assets/)
+        s = md_int_img_tag(s) # ![url] (starts in assets/)
+        s = md_ext_img_tag(s) # ?[url]
+        s = md_link_tag(s) # [text](url)
+        s = md_html_block_tag(s, '!HTML', '', st) # don't handle md during inline html
+        s = md_block_tag(s, '```', '<pre class="blog-pre"><code class="blog-code-block">', st)
         s = md_tag(s, '`\W?(.*?)\W?`', '<code class="blog-code">', '</code>')
     else:
+        s = md_html_block_tag(s, '!HTML', '', st) # don't handle md during inline html
         s = md_block_tag(s, '```', '</code></pre>', st)
     if s.strip() == "":
         return "<br>"
