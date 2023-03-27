@@ -13,7 +13,7 @@
 body {
 	font-family: Consolas, Ubuntu, Calibri;
 	margin: 0;
-	background: black;
+	background: #100610;
 	color: #fff;
 	word-wrap: break-word;
 }
@@ -22,7 +22,7 @@ header {
 	padding-top: 2rem;
 	padding-bottom: 2rem;
 	border-bottom: 1px solid #d53880;
-	background: black;
+	background: #050505;
 }
 
 footer {
